@@ -2,6 +2,6 @@
 
 Alpine based web tools
 
-- webp-tools
+- web-tools
 
 Tools useful for Kubernetes image optimalisation jobs
