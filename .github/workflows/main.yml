@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: cdrocker/backup-tools:latest
+          tags: cdrocker/web-tools:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
