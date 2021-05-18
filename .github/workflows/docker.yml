@@ -8,6 +8,8 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    env:
+      IMAGE: web-tools
     steps:
       - name: Docker meta
         id: meta
@@ -15,16 +17,13 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            cdrocker/web-tools
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=schedule
             type=ref,event=branch
-            type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=sha
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
