@@ -1,11 +1,7 @@
----
-name: 'build images'
+name: 'build tagged images'
 
 on:
   push:
-    branches:
-      - 'master'
-      - 'main'
     tags:
       - 'v*.*.*'
 
