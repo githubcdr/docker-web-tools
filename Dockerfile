@@ -15,6 +15,7 @@ RUN	TARGETARCH=$(uname -m) \
 	&& if [ "$TARGETARCH" = "x86_64" ]; then TARGETARCH="amd64"; fi \
 	&& if [ "$TARGETARCH" = "aarch64" ]; then TARGETARCH="arm64"; fi \
 	&& if [ "$TARGETARCH" = "armv7l" ]; then TARGETARCH="arm7"; fi \
+	&& echo "TARGETARCH="${TARGETARCH} \
 	&& apk add --update --no-cache libwebp-tools imagemagick git xz ca-certificates restic mariadb-client wget curl openssh-client rsync \
 	&& curl -O https://downloads.rclone.org/rclone-current-linux-${TARGETARCH}.zip \
 	&& unzip rclone-current-linux-${TARGETARCH}.zip \
