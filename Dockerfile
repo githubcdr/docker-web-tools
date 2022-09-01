@@ -13,8 +13,8 @@ LABEL \
 
 RUN	   apk add --update --no-cache libwebp-tools imagemagick git xz ca-certificates restic mariadb-client wget curl openssh-client rsync \
 	&& curl -O https://downloads.rclone.org/rclone-current-linux-$(uname -m).zip \
-	&& unzip rclone-current-linux-amd64.zip \
-	&& cd rclone-*-linux-amd64 \
+	&& unzip rclone-current-linux-$(uname -m).zip \
+	&& cd rclone-*-linux-$(uname -m) \
 	&& cp rclone /usr/bin/ \
 	&& chown root:root /usr/bin/rclone \
 	&& chmod 755 /usr/bin/rclone \
