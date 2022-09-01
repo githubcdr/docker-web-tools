@@ -14,7 +14,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     env:
-      IMAGE: web-tools
+      IMAGE: hosting-tools
     steps:
       - name: Docker meta
         id: meta
