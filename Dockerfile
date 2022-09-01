@@ -12,7 +12,7 @@ LABEL \
 #	&& echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
 
 RUN	   apk add --update --no-cache libwebp-tools imagemagick git xz ca-certificates restic mariadb-client wget curl openssh-client rsync \
-	&& curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
+	&& curl -O https://downloads.rclone.org/rclone-current-linux-$(uname -m).zip \
 	&& unzip rclone-current-linux-amd64.zip \
 	&& cd rclone-*-linux-amd64 \
 	&& cp rclone /usr/bin/ \
