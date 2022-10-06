@@ -4,4 +4,4 @@ Alpine based web tools
 
 - web-tools
 
-Tools useful for Kubernetes image optimalisation jobs
+Tools useful for Kubernetes image optimalization
