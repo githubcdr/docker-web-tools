@@ -1,5 +1,5 @@
 FROM rclone/rclone:1.60.1 AS rclone
-FROM kopia/kopia:20221217.0.161912 AS kopia
+FROM kopia/kopia:20221228.0.204701 AS kopia
 FROM alpine:20221110 AS base
 RUN  apk add --update --no-cache libwebp-tools imagemagick git xz ca-certificates restic mariadb-client wget curl openssh-client rsync
 COPY --from=rclone /usr/local/bin/rclone /usr/local/bin/rclone
