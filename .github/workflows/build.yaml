@@ -16,7 +16,7 @@ env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   DOCKER_CLI_EXPERIMENTAL: enabled
   AUTHOR: ${{ github.actor }}
-  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_NAME: "hosting-tools"
   REPO_OWNER: ${{ github.repository_owner }}
 
 jobs:
@@ -48,11 +48,11 @@ jobs:
             type=semver,pattern={{major}}
           labels: |
             maintainer={{env.AUTHOR}}
-            org.opencontainers.image.title={{env.IMAGE_NAME}}
-            org.opencontainers.image.description={{github.description}}
+            org.opencontainers.image.title=${{env.IMAGE_NAME}}
+            org.opencontainers.image.description=${{github.description}}
             org.opencontainers.image.url="https://codar.nl"
-            org.opencontainers.image.source="https://github.com/{{env.REPO_OWNER}}/{{env.REPO_NAME}}"
-            org.opencontainers.image.licenses={{github.event.repository.license.spdx_id}}
+            org.opencontainers.image.source="https://github.com/${{env.REPO_OWNER}}/${{env.REPO_NAME}}"
+            org.opencontainers.image.licenses=${{github.event.repository.license.spdx_id}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
