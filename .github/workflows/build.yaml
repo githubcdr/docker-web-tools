@@ -47,12 +47,8 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
           labels: |
-            maintainer={{env.AUTHOR}}
-            org.opencontainers.image.title=${{env.IMAGE_NAME}}
-            org.opencontainers.image.description=${{github.description}}
+            maintainer=${{env.AUTHOR}}
             org.opencontainers.image.url="https://codar.nl"
-            org.opencontainers.image.source="https://github.com/${{env.REPO_OWNER}}/${{env.REPO_NAME}}"
-            org.opencontainers.image.licenses=${{github.event.repository.license.spdx_id}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
