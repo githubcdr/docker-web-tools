@@ -1,26 +1,35 @@
-name: 'build tagged images'
+name: 'build and push container image'
 
 on:
   push:
     tags:
       - 'v*.*.*'
-  #schedule:
-  #  - cron: '5 4 * * *'
+  # schedule 2 weekly on Sunday at 4:05 AM UTC
+  schedule:
+    - cron: '5 4 * * 0'
   release:
     types: [published]
   workflow_dispatch:
+
+env:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+  DOCKER_CLI_EXPERIMENTAL: enabled
+  AUTHOR: ${{ github.actor }}
+  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_OWNER: ${{ github.repository_owner }}
 
 jobs:
   docker:
     permissions:
       packages: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - name: Show GitHub context   
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}   
-        run: echo "$GITHUB_CONTEXT"
-        shell: bash
+#      - name: Show GitHub context   
+#        env:
+#          GITHUB_CONTEXT: ${{ toJson(github) }}
+#        run: echo "$GITHUB_CONTEXT"
+#        shell: bash
 #      - name: TruffleHog OSS
 #        uses: trufflesecurity/trufflehog@v3.29.1
       - name: Docker meta
@@ -37,6 +46,13 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
+          labels: |
+            maintainer={{env.AUTHOR}}
+            org.opencontainers.image.title={{env.IMAGE_NAME}}
+            org.opencontainers.image.description={{github.description}}
+            org.opencontainers.image.url="https://codar.nl"
+            org.opencontainers.image.source="https://github.com/{{env.REPO_OWNER}}/{{env.REPO_NAME}}"
+            org.opencontainers.image.licenses={{github.event.repository.license.spdx_id}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
