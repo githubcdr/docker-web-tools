@@ -1,7 +1,7 @@
-# docker-backup
+# docker-hosting-tools
 
-Alpine based web tools
+Alpine based hosting tools
 
-- web-tools
-
-Tools useful for Kubernetes image optimalization
+- restic
+- kopia
+- etc.
