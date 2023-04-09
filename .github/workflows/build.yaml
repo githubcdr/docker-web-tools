@@ -72,6 +72,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Codar Container registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.CODARREPO_USERNAME }}
+          password: ${{ secrets.CODARREPO_TOKEN }}
+          registry: ${{ secrets.CODARREPO_URL }}
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v4
