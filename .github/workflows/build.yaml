@@ -40,6 +40,7 @@ jobs:
           images: |
             ghcr.io/githubcdr/hosting-tools
             docker.io/cdrocker/hosting-tools
+            git.codar.nl/codarhq/hosting-tools
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch
@@ -51,11 +52,6 @@ jobs:
             org.opencontainers.image.created=${{ steps.date.outputs.date }}
             org.opencontainers.image.url=https://codar.nl
             org.opencontainers.image.licenses=MIT
-          annotations: |
-            org.opencontainers.image.created=${{ steps.date.outputs.date }}
-            org.opencontainers.image.url=https://codar.nl
-            org.opencontainers.image.licenses=MIT
-            org.opencontainers.image.description=${{env.REPO_NAME}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
