@@ -9,6 +9,6 @@ LABEL org.opencontainers.image.source "http://github.com/githubcdr/docker-hostin
 LABEL org.opencontainers.image.licenses "MIT"
 LABEL org.opencontainers.image.vendor "githubcdr"
 
-RUN  apk add --update --no-cache libwebp-tools imagemagick git xz ca-certificates restic mariadb-client wget curl openssh-client rsync
+RUN  apk add --update --no-cache libwebp-tools imagemagick git xz ca-certificates restic mariadb-client wget openssh-client rsync
 COPY --from=rclone /usr/local/bin/rclone /usr/local/bin/rclone
 COPY --from=kopia /bin/kopia /usr/local/bin/kopia
