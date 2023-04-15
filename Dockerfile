@@ -1,5 +1,5 @@
 FROM rclone/rclone:1.62.2 AS rclone
-FROM kopia/kopia:20230413.0.222547 AS kopia
+FROM kopia/kopia:20230414.0.191610 AS kopia
 FROM alpine:20230329 AS base
 
 LABEL org.opencontainers.image.title "Hosting tools"
