@@ -1,5 +1,5 @@
 FROM docker.io/rclone/rclone:1.62.2 AS rclone
-FROM docker.io/kopia/kopia:20230605.0.73225 AS kopia
+FROM docker.io/kopia/kopia:20230612.0.203455 AS kopia
 FROM docker.io/restic/restic:0.15.2 AS restic
 FROM docker.io/alpine:20230329 AS base
 
