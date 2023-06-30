@@ -4,7 +4,7 @@ FROM docker.io/restic/restic:0.15.2 AS restic
 FROM docker.io/alpine:20230329 AS base
 
 LABEL org.opencontainers.image.title "Hosting tools"
-LABEL org.opencontainers.image.description "Hosting tools, rsync, restic, kopia, rclone, imagemagick, git, xz, ca-certificates, mariadb-client, wget, curl, openssh-client, rsync"
+LABEL org.opencontainers.image.description "Hosting tools, rsync, restic, kopia, rclone, imagemagick, git, xz, ca-certificates, mariadb-client, wget, curl, openssh-client, rsync etc."
 LABEL org.opencontainers.image.authors "githubcdr"
 LABEL org.opencontainers.image.source "http://github.com/githubcdr/docker-hosting-tools"
 LABEL org.opencontainers.image.licenses "MIT"
