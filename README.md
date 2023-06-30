@@ -4,4 +4,4 @@ Alpine based hosting tools
 
 - restic
 - kopia
-- etc.
+- etc
