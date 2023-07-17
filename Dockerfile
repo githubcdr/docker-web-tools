@@ -1,7 +1,7 @@
 FROM docker.io/rclone/rclone:1.63.0 AS rclone
 FROM docker.io/kopia/kopia:20230716.0.95140 AS kopia
 FROM docker.io/restic/restic:0.15.2 AS restic
-FROM docker.io/alpine:3.15 AS downloader
+FROM docker.io/alpine:3.18 AS downloader
 WORKDIR /tmp
 RUN  wget https://github.com/go-task/task/releases/download/v3.27.1/task_linux_amd64.tar.gz && \
      tar zxvf task_linux_amd64.tar.gz
