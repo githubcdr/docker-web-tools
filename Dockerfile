@@ -1,4 +1,4 @@
-FROM docker.io/rclone/rclone:1.63.0 AS rclone
+FROM docker.io/rclone/rclone:1.63.1 AS rclone
 FROM docker.io/kopia/kopia:20230722.0.125323 AS kopia
 FROM docker.io/restic/restic:0.15.2 AS restic
 FROM docker.io/alpine:3.18 AS downloader
