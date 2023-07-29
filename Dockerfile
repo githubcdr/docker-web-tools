@@ -2,9 +2,10 @@ FROM docker.io/rclone/rclone:1.63.1 AS rclone
 FROM docker.io/kopia/kopia:20230727.0.113040 AS kopia
 FROM docker.io/restic/restic:0.15.2 AS restic
 FROM docker.io/alpine:3.18 AS downloader
+ARG  TARGETARCH
 WORKDIR /tmp
-RUN  wget https://github.com/go-task/task/releases/download/v3.27.1/task_linux_amd64.tar.gz && \
-     tar zxvf task_linux_amd64.tar.gz
+RUN  wget https://github.com/go-task/task/releases/download/v3.27.1/task_linux_${TARGETARCH}.tar.gz && \
+     tar zxvf task_linux_${TARGETARCH}.tar.gz
 
 FROM docker.io/alpine:20230329 AS base
 LABEL org.opencontainers.image.title "Hosting tools"
