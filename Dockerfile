@@ -1,7 +1,7 @@
 FROM docker.io/rclone/rclone:1.64.2 AS rclone
 FROM docker.io/kopia/kopia:20231018.0.234104 AS kopia
 FROM docker.io/restic/restic:0.16.0 AS restic
-FROM docker.io/alpine:3.18 AS downloader
+FROM docker.io/alpine:20230901 AS downloader
 ARG  TARGETARCH
 WORKDIR /tmp
 RUN  wget https://github.com/go-task/task/releases/download/v3.27.1/task_linux_${TARGETARCH}.tar.gz && \
