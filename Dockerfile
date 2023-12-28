@@ -1,13 +1,13 @@
 FROM docker.io/rclone/rclone:1.65.0 AS rclone
 FROM docker.io/kopia/kopia:20231227.0.222930 AS kopia
 FROM docker.io/restic/restic:0.16.2 AS restic
-FROM docker.io/alpine:20230901 AS downloader
+FROM docker.io/alpine:20231219 AS downloader
 ARG  TARGETARCH
 WORKDIR /tmp
 RUN  wget https://github.com/go-task/task/releases/download/v3.27.1/task_linux_${TARGETARCH}.tar.gz && \
      tar zxvf task_linux_${TARGETARCH}.tar.gz
 
-FROM docker.io/alpine:20230901 AS base
+FROM docker.io/alpine:20231219 AS base
 LABEL org.opencontainers.image.title "Hosting tools"
 LABEL org.opencontainers.image.description "Hosting tools, rsync, restic, kopia, rclone, imagemagick, git, xz, ca-certificates, mariadb-client, wget, curl, openssh-client, rsync, task etc."
 LABEL org.opencontainers.image.authors "githubcdr"
