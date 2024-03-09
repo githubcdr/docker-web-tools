@@ -1,5 +1,5 @@
 FROM docker.io/rclone/rclone:1.65.2 AS rclone
-FROM docker.io/kopia/kopia:20240302.0.223408 AS kopia
+FROM docker.io/kopia/kopia:20240308.0.234127 AS kopia
 FROM docker.io/restic/restic:0.16.4 AS restic
 FROM docker.io/alpine:20231219 AS downloader
 ARG  TARGETARCH
