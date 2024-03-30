@@ -1,13 +1,13 @@
 FROM docker.io/rclone/rclone:1.66.0 AS rclone
 FROM docker.io/kopia/kopia:0.16.1 AS kopia
 FROM docker.io/restic/restic:0.16.4 AS restic
-FROM docker.io/alpine:20240315 AS downloader
+FROM docker.io/alpine:20240329 AS downloader
 ARG  TARGETARCH
 WORKDIR /tmp
 RUN  wget https://github.com/go-task/task/releases/download/v3.35.1/task_linux_${TARGETARCH}.tar.gz && \
      tar zxvf task_linux_${TARGETARCH}.tar.gz
 
-FROM docker.io/alpine:20240315 AS base
+FROM docker.io/alpine:20240329 AS base
 LABEL org.opencontainers.image.title "Hosting tools"
 LABEL org.opencontainers.image.description "MariaDB client, Imagemagick, Rsync, WebP, XZ, Restic, Kopia, Rclone, Task and Just"
 LABEL org.opencontainers.image.authors "githubcdr"
