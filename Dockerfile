@@ -7,7 +7,7 @@ FROM docker.io/restic/restic:0.16.4 AS restic
 #RUN  wget https://github.com/go-task/task/releases/download/v3.35.1/task_linux_${TARGETARCH}.tar.gz && \
 #     tar zxvf task_linux_${TARGETARCH}.tar.gz
 
-FROM cgr.dev/chainguard/wolfi-base AS base
+FROM cgr.dev/chainguard/wolfi-base
 LABEL org.opencontainers.image.title "Hosting tools"
 LABEL org.opencontainers.image.description "MariaDB client, Imagemagick, Rsync, WebP, XZ, Restic, Kopia, Rclone, Task and Just"
 LABEL org.opencontainers.image.authors "githubcdr"
