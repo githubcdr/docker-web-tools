@@ -8,6 +8,7 @@ FROM docker.io/restic/restic:0.16.4 AS restic
 #     tar zxvf task_linux_${TARGETARCH}.tar.gz
 
 FROM cgr.dev/chainguard/wolfi-base
+
 LABEL org.opencontainers.image.title "Hosting tools"
 LABEL org.opencontainers.image.description "MariaDB client, Imagemagick, Rsync, WebP, XZ, Restic, Kopia, Rclone, Task and Just"
 LABEL org.opencontainers.image.authors "githubcdr"
@@ -15,8 +16,10 @@ LABEL org.opencontainers.image.source "http://github.com/githubcdr/docker-hostin
 LABEL org.opencontainers.image.licenses "MIT"
 LABEL org.opencontainers.image.vendor "githubcdr"
 
+USER root
 RUN  apk add --update --no-cache libwebp-tools imagemagick git xz ca-certificates mariadb-client wget curl openssh-client rsync just task
 #COPY --from=downloader /tmp/task /usr/local/bin/
+USER nonroot
 COPY --from=rclone /usr/local/bin/rclone /usr/local/bin/
 COPY --from=restic /usr/bin/restic /usr/local/bin/
 COPY --from=kopia /bin/kopia /usr/local/bin/
