@@ -16,6 +16,7 @@ env:
   REPO_OWNER: ${{ github.repository_owner }}
 
 jobs:
+  runs-on: arc-runner-org
   validate:
     permissions:
       packages: write
