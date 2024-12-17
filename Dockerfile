@@ -1,6 +1,7 @@
 FROM docker.io/rclone/rclone:1.68.2 AS rclone
 FROM docker.io/kopia/kopia:0.18.2 AS kopia
 FROM docker.io/restic/restic:0.17.3 AS restic
+FROM ghcr.io/rustic-rs/rustic:v0.9.5 AS rustic
 FROM cgr.dev/chainguard/wolfi-base
 
 LABEL org.opencontainers.image.title "Hosting tools"
@@ -16,3 +17,4 @@ RUN  apk add --update --no-cache task just libwebp-tools wget curl jq yq xz mari
 COPY --from=rclone /usr/local/bin/rclone /usr/local/bin/
 COPY --from=kopia /bin/kopia /usr/local/bin/
 COPY --from=restic /usr/bin/restic /usr/local/bin/
+COPY --from=rustic /rustic /usr/local/bin/
